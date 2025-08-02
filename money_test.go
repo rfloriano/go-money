@@ -879,6 +879,23 @@ func TestNewFromFloatWithRound(t *testing.T) {
 	if m.amount != 14723 {
 		t.Errorf("Expected %d got %d", 14723, m.amount)
 	}
+
+	m = NewFromFloatWithRound(0.125, EUR)
+	if m.amount != 13 {
+		t.Errorf("Expected %d got %d", 13, m.amount)
+	}
+
+	m = NewFromFloatWithRound(0.125, JPY)
+
+	if m.amount != 0 {
+		t.Errorf("Expected %d got %d", 0, m.amount)
+	}
+
+	m = NewFromFloatWithRound(0.125, IQD)
+
+	if m.amount != 125 {
+		t.Errorf("Expected %d got %d", 125, m.amount)
+	}
 }
 
 func TestNewFromFloatWithRound_WithUnregisteredCurrency(t *testing.T) {
